@@ -59,7 +59,9 @@ def connect():
     """
     Initiates and tests the connection to Reddit.
     """
-    reddit = praw.Reddit(client_id=config['reddit']['client-id'], client_secret=config['reddit']['client-secret'], refresh_token=config['reddit']['refresh-token'], user_agent=f"{__NAME__} v{__VERSION__} by /u/ailothaen")
+    refresh_token_env = os.getenv('refresh_token')
+    refresh_token = refresh_token_env if refresh_token_env is not None else config['reddit']['refresh-token']
+    reddit = praw.Reddit(client_id=config['reddit']['client-id'], client_secret=config['reddit']['client-secret'], refresh_token=refresh_token, user_agent=f"{__NAME__} v{__VERSION__} by /u/ailothaen")
     reddit.auth.scopes()
     return reddit
 
