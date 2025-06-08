@@ -18,13 +18,12 @@ Install dependencies:
 ```bash
 python3 -m pip install -r requirements.txt
 ```
-(See [Shell Function](##Shell Function) if you want to use a Python virtual environment.)
 
 Copy `config.yml.example` to `config.yml` and put all the information needed to connect (client ID, client secret and refresh token). If you have no clue about what these options are, follow these steps:
 1. [Go here](https://www.reddit.com/prefs/apps) and create an app. Use the "script" type, and put `http://localhost:8080` as redirect URI (the other options do not matter).
-3. Finish creating the app. Take note of your client ID and client secret (the client ID is below the 'personal use script' label, the secret is beside the 'secret' label).
-4. Run the script `authentication.py` to get your refresh token.
-5. Edit the config file to put the client ID, client secret and refresh token in it. (You can avoid putting the refresh token in the config file; see [Shell Function](## Shell Function) for details.)
+2. Finish creating the app. Take note of your client ID and client secret (the client ID is below the 'personal use script' label, the secret is beside the 'secret' label).
+3. Run the script `authentication.py` to get your refresh token.
+4. Edit the config file to put the client ID, client secret and refresh token in it. (You can avoid putting the refresh token in the config file; see [Shell Function](#shell-function) for details.)
 
 ## Running the script
 
