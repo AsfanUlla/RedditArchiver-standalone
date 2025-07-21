@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-import random, socket, sys, praw
+import random, socket, sys, praw, argparse
 
 # Obtained from
 # https://praw.readthedocs.io/en/stable/tutorials/refresh_token.html#obtaining-refresh-tokens
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--client-id', help="Reddit client ID")
+parser.add_argument('--client-secret', help="Reddit client secret")
+args = parser.parse_args()
 
 def main():
     """Provide the program's entry point when directly executed."""
 
-    client_id = input("Client ID: ")
-    client_secret = input("Client secret: ")
+    client_id = args.client_id or input("Client ID: ")
+    client_secret = args.client_secret or input("Client secret: ")
     reddit = praw.Reddit(
         client_id=client_id,
         client_secret=client_secret,
