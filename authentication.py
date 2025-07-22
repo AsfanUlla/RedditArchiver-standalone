@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import random, socket, sys, praw, argparse
+import random, socket, sys, praw, argparse, webbrowser
 
 # Obtained from
 # https://praw.readthedocs.io/en/stable/tutorials/refresh_token.html#obtaining-refresh-tokens
@@ -22,8 +22,13 @@ def main():
     )
     state = str(random.randint(0, 65000))
     url = reddit.auth.url(duration="permanent", scopes=("read", "history", "identity"), state=state)
-    print(f"Now open this url in your browser:")
-    print(f"{url}")
+
+    if url:
+        if webbrowser.open_new_tab(url):
+            print("Opened URL in browser")
+        else:
+            print(f"Now open this url in your browser:")
+            print(f"{url}")
 
     client = receive_connection()
     data = client.recv(1024).decode("utf-8")
